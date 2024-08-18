@@ -26,7 +26,7 @@ This project represent  image  based classification of **2476** training and tes
 
 Following shows the software tools and libraries used in project:
 
-* **Development Environment**: **Visual Studio Code (v1.75.0)** configured with **Python (v3.10.8)** for scripting and integration tasks.
+* **Development Environment**: [**Visual Studio Code (v1.75.0)**](https://code.visualstudio.com/updates/v1_75) configured with [**Python (v3.10.8)**](https://www.python.org/downloads/release/python-3108/) for scripting and integration tasks.
 * **Image Preprocessing**: Utilized the [**Rembg library (v2.0.30)**](https://pypi.org/project/rembg/) for efficient background removal from gemstone images, enhancing the quality of input data for machine learning models.
 * **Data Mining and Machine Learning**: Employed [**Orange Data Mining (v3.34.1)**](https://orangedatamining.com/getting-started/) as the primary platform for the classification of gemstone images, integrating multiple machine learning algorithms for model training and evaluation.
 * [**SV2 Library (v1.5)**](https://pypi.org/project/sv2/): Integrated for additional preprocessing or feature extraction tasks, contributing to the overall workflow of image-based gemstone classification.
@@ -127,9 +127,9 @@ The input for the outlier detection process was the dataset produced by the Imag
 
 The output of this process was a classification of the dataset into outliers and inliers.
 
-**Outliers:** These are instances that were scored as outliers by the TOF method. Outliers often represent data points that are significantly different from the majority of the dataset, possibly due to errors in data processing, unusual characteristics, or noise. In the context of this gemstone dataset, outliers might include images that were incorrectly segmented, mislabeled, or had unusual visual features not representative of their class.
+*Outliers:* These are instances that were scored as outliers by the TOF method. Outliers often represent data points that are significantly different from the majority of the dataset, possibly due to errors in data processing, unusual characteristics, or noise. In the context of this gemstone dataset, outliers might include images that were incorrectly segmented, mislabeled, or had unusual visual features not representative of their class.
 
-**Inliers:** These are instances that were not scored as outliers, meaning they fit well within the expected distribution of the data. Inliers represent the "normal" data points that are consistent with the patterns seen in the majority of the dataset.
+**Inliers:* These are instances that were not scored as outliers, meaning they fit well within the expected distribution of the data. Inliers represent the "normal" data points that are consistent with the patterns seen in the majority of the dataset.
 
 ![outliersinliers](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/outlier%20data.png)
 
@@ -161,7 +161,7 @@ The normalized dataset is now ready for use in machine learning models, as norma
 
 #### 5.	Classifiers Construction
 
-Supervised Machine Learning Algorithms
+**Supervised Machine Learning Algorithms**
 
 To classify the gemstone images, several supervised machine learning algorithms were employed. Each algorithm was selected for its ability to handle the features extracted from the images and provide accurate classification results. The following classifiers were used logistic regressing using **logistic regression widget**, SVM using **SVM widget**, random forest using **random forest widget**, and neural network using **neural network widget**.
 
@@ -171,7 +171,8 @@ To classify the gemstone images, several supervised machine learning algorithms 
 
 Logistic Regression provides probabilistic predictions for each class based on a non-linear transformation of the input features. In the context of multi-class classification, the algorithm uses the softmax function to extend binary logistic regression to multiple classes. The softmax function transforms the raw model outputs (logits) into probabilities by exponentiating and normalizing them, ensuring that the sum of the probabilities for all classes equals one.
 
-**Regularization Parameter (C)**
+*Regularization Parameter (C)*
+
 The parameter 𝐶 in Logistic Regression is the inverse of the regularization strength. Regularization is used to prevent overfitting by penalizing excessively complex models. A lower value of C increases the regularization strength, leading to a simpler model with reduced variance but potentially higher bias. Conversely, a higher value of  C decreases regularization, allowing the model to fit the training data more closely but with a higher risk of overfitting.
 
 **Support Vector Machine (SVM)**
@@ -180,19 +181,17 @@ The Support Vector Machine is a powerful classification algorithm that works by 
 
 To address multi-class classification problems, a strategy known as "one-vs-rest" or "one-vs-all" is employed. In this approach, multiple binary SVM classifiers are constructed, each designed to distinguish one class from all other classes. This results in a series of binary classifiers that collectively handle the multi-class problem.
 
-**Optimized Parameters**
-
 Three key parameters were optimized to enhance the performance of the SVM
 
-**Kernel Type**
+**Kernel Type*
 
 The kernel function determines how the input features are transformed into a higher-dimensional space to enable linear separation of classes. Common kernel types include linear, polynomial, and radial basis function (RBF) kernels. The choice of kernel impacts the SVM’s ability to model complex relationships between features.
 
-**Regularization Parameter (C)**
+**Regularization Parameter (C)*
 
 The parameter c  controls the trade-off between achieving a low error on the training data and minimizing the model's complexity. A lower value of increases regularization, which encourages a simpler model by penalizing large margin violations. A higher value of 𝐶n decreases regularization, allowing the model to fit the training data more closely but with a greater risk of overfitting.
 
-**Kernel Coefficient (Gamma)**
+**Kernel Coefficient (Gamma)*
 
 The gamma parameter is specific to certain kernel functions, such as the RBF kernel. It controls the influence of a single training example. A high gamma value means that the influence of a training example is limited to a smaller region, leading to a more complex decision boundary, while a low gamma value means that the influence is broader, leading to a smoother decision boundary.
 
@@ -204,19 +203,17 @@ By optimizing these parameters, the SVM classifier was tuned to achieve the best
 
 Random Forest is an ensemble learning method that constructs multiple decision trees during training and outputs the model of the classes (classification) of the individual trees. It is well-regarded for its robustness and accuracy, as it reduces the risk of over fitting by averaging the results from multiple trees. This approach reduces the correlation between the trees, ensuring that each tree in the forest is different and that the overall model benefits from a diverse set of predictions. At each node within a tree, the data is recursively partitioned based on the feature that results in the most homogeneous collection of samples. This feature is selected from a randomly chosen subset of all available features, further reducing the correlation between trees and enhancing the model’s robustness.
 
-**Optimized Parameters**
-
 Three key parameters were optimized to improve the performance of the Random Forest model
 
-**Number of Estimators (Trees)**
+**Number of Estimators (Trees)*
 
 This parameter determines the number of trees in the forest. A higher number of trees generally improves the model’s accuracy and stability, as it reduces variance. However, it also increases computational cost. The optimal number of trees strikes a balance between performance and efficiency.
 
-**Maximum Depth of the Tree**
+**Maximum Depth of the Tree*
 
 The maximum depth controls how deep each tree can grow. Deeper trees can capture more complex patterns in the data but are more prone to overfitting. By optimizing this parameter, the model can effectively capture important patterns without becoming too complex.
 
-**Minimum Number of Samples Required in Each Leaf Node**
+**Minimum Number of Samples Required in Each Leaf Node*
 
 This parameter sets the minimum number of samples that must be present in a leaf node. Increasing this number can prevent the model from creating overly specific splits, which can lead to overfitting. Optimizing this parameter helps in controlling the tree’s complexity and ensuring that the model generalizes well to new data.
 
@@ -295,11 +292,11 @@ This ranking reflects the models' ability to accurately classify gemstones and t
 
 When considering the training and testing times, the experiments were conducted on a machine with an Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz. The training and testing times, measured in seconds, provided insight into the computational efficiency of each model.
 
-**Training Time:**
+**Training Time:*
 
 Random Forest showed the quickest training time. This efficiency is due to its parallel nature, where multiple decision trees are trained simultaneously. The simplicity of each individual tree and the use of bootstrapped samples contribute to its fast training speed. Support Vector Machine (SVM) came next in terms of training time.  Artificial Neural Network (ANN-MLP)  took longer. Neural networks typically require more time to train due to the iterative nature of back propagation and the optimization of weights across multiple layers. Logistic Regression had the longest training time among the models. This is likely due to the optimization process involved in finding the best-fitting model, especially when regularization is applied, which can increase computational complexity.
 
-**Testing Time:**
+**Testing Time:*
 Random Forest  also demonstrated the fastest testing time. Once trained, predicting with Random Forest is quick because it simply involves aggregating the outputs of the decision trees. Logistic Regression  had the second-fastest testing time. Artificial Neural Network (ANN-MLP)  ranked third in testing time. Support Vector Machine (SVM)  had the longest testing time. 
 
 This analysis shows that while Random Forest is the most efficient in both training and testing, Logistic Regression, despite being slower to train, offers relatively fast prediction times. ANN and SVM, while powerful, require more time for both training and testing, reflecting their complexity.
