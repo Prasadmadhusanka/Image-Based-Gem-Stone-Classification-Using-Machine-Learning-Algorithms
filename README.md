@@ -183,15 +183,15 @@ To address multi-class classification problems, a strategy known as "one-vs-rest
 
 Three key parameters were optimized to enhance the performance of the SVM
 
-**Kernel Type*
+*Kernel Type*
 
 The kernel function determines how the input features are transformed into a higher-dimensional space to enable linear separation of classes. Common kernel types include linear, polynomial, and radial basis function (RBF) kernels. The choice of kernel impacts the SVM’s ability to model complex relationships between features.
 
-**Regularization Parameter (C)*
+*Regularization Parameter (C)*
 
 The parameter c  controls the trade-off between achieving a low error on the training data and minimizing the model's complexity. A lower value of increases regularization, which encourages a simpler model by penalizing large margin violations. A higher value of 𝐶n decreases regularization, allowing the model to fit the training data more closely but with a greater risk of overfitting.
 
-**Kernel Coefficient (Gamma)*
+*Kernel Coefficient (Gamma)*
 
 The gamma parameter is specific to certain kernel functions, such as the RBF kernel. It controls the influence of a single training example. A high gamma value means that the influence of a training example is limited to a smaller region, leading to a more complex decision boundary, while a low gamma value means that the influence is broader, leading to a smoother decision boundary.
 
@@ -205,15 +205,14 @@ Random Forest is an ensemble learning method that constructs multiple decision t
 
 Three key parameters were optimized to improve the performance of the Random Forest model
 
-**Number of Estimators (Trees)*
+*Number of Estimators (Trees)*
 
 This parameter determines the number of trees in the forest. A higher number of trees generally improves the model’s accuracy and stability, as it reduces variance. However, it also increases computational cost. The optimal number of trees strikes a balance between performance and efficiency.
 
-**Maximum Depth of the Tree*
+*Maximum Depth of the Tree*
 
 The maximum depth controls how deep each tree can grow. Deeper trees can capture more complex patterns in the data but are more prone to overfitting. By optimizing this parameter, the model can effectively capture important patterns without becoming too complex.
-
-**Minimum Number of Samples Required in Each Leaf Node*
+*Minimum Number of Samples Required in Each Leaf Node*
 
 This parameter sets the minimum number of samples that must be present in a leaf node. Increasing this number can prevent the model from creating overly specific splits, which can lead to overfitting. Optimizing this parameter helps in controlling the tree’s complexity and ensuring that the model generalizes well to new data.
 
@@ -292,11 +291,12 @@ This ranking reflects the models' ability to accurately classify gemstones and t
 
 When considering the training and testing times, the experiments were conducted on a machine with an Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz. The training and testing times, measured in seconds, provided insight into the computational efficiency of each model.
 
-**Training Time:*
+*Training Time:*
 
 Random Forest showed the quickest training time. This efficiency is due to its parallel nature, where multiple decision trees are trained simultaneously. The simplicity of each individual tree and the use of bootstrapped samples contribute to its fast training speed. Support Vector Machine (SVM) came next in terms of training time.  Artificial Neural Network (ANN-MLP)  took longer. Neural networks typically require more time to train due to the iterative nature of back propagation and the optimization of weights across multiple layers. Logistic Regression had the longest training time among the models. This is likely due to the optimization process involved in finding the best-fitting model, especially when regularization is applied, which can increase computational complexity.
 
-**Testing Time:*
+*Testing Time:*
+
 Random Forest  also demonstrated the fastest testing time. Once trained, predicting with Random Forest is quick because it simply involves aggregating the outputs of the decision trees. Logistic Regression  had the second-fastest testing time. Artificial Neural Network (ANN-MLP)  ranked third in testing time. Support Vector Machine (SVM)  had the longest testing time. 
 
 This analysis shows that while Random Forest is the most efficient in both training and testing, Logistic Regression, despite being slower to train, offers relatively fast prediction times. ANN and SVM, while powerful, require more time for both training and testing, reflecting their complexity.
