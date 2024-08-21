@@ -1,6 +1,24 @@
 # Image Based Gem Stone Classification Using Machine Learning Algorithms
 
+## Repository Overview
+
 This repository shows the project related to image based gem stone classification using ML algorithms and it cintains all files and documents used for this project for your further reference.
+
+## Table of Content
+- [Introduction](#introduction)
+- [Objectives](#objectives)
+- [Materials and Methods](#materials-and-methods)
+  - [Software Used](#software-used)
+  - [Methodology](#methodology)
+    - [Data Acquisition](#data-acquisition)
+    - [Image Preprocessing](#image-preprocessing)
+    - [Feature Extraction Using Image Embedding](#feature-extraction-using-image-embedding)
+    - [Data Pre-processing ](#data-pre-processing)
+    - [Classifiers Construction](#classifiers-construction)
+    - [Evaluation of Classifiers](#evaluation-of-classifiers)
+ - [Results and Discussion](#results-and-discussion)
+ - [Conclusion](#conclusion)
+
 
 ## Introduction 
 
@@ -275,7 +293,7 @@ By comparing the performance metrics on the training, test, and unseen datasets,
 
 ![prediction](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/prediction.png)
 
-#### 7.	Results and discussion 
+### Results and Discussion 
 
 **Using train and test data set**
 
@@ -307,7 +325,7 @@ This analysis shows that while Random Forest is the most efficient in both train
 
 When considering the performance metrics AUC, accuracy, precision, F1-score, sensitivity, and specificity on the prediction dataset, Logistic Regression secured the first place. It consistently achieved the highest scores across all these metrics, demonstrating its superior ability to generalize to new, unseen data. Following Logistic Regression, the Artificial Neural Network (ANN-MLP) ranked second, showing strong performance but slightly below that of Logistic Regression. The Support Vector Machine (SVM) came in third, performing well but not as strongly as Logistic Regression and ANN. Lastly, Random Forest ranked fourth in terms of these metrics, indicating that while it was efficient in terms of training and testing time, it did not perform as well as the other models in terms of prediction accuracy and other performance measures.
 
-#### 8.	Conclusion
+### Conclusion
 
 The **Random Forest** algorithm demonstrated the fastest training and testing times compared to other machine learning algorithms. However, it exhibited low performance across key metrics such as accuracy, precision, sensitivity, F1-score, and specificity, all of which were below 50%. As a result, Random Forest is not suitable for image-based gemstone classification.
 
