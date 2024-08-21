@@ -70,13 +70,13 @@ Following shows the images of gemstones that collected by data sources. All gems
  
 #### 2.	Image Preprocessing
 
-#### Gem Class Classification
+##### Gem Class Classification
 
 The original Kaggle dataset contained 87 gemstone categories. However, some categories were removed to improve the accuracy of the algorithms. Specifically, the "Garnet Red" category was excluded due to significant overlap with other categories, including Almandine, Pyrope, Rhodolite, and Spessartite. The "Moonstone" category was also eliminated because the images within this category displayed a wide range of colors, such as orange, white, and yellow, which introduced unwanted variability and could negatively impact the performance of the algorithms. after eliminating these two classes 85 classes are used for this project.
 
 ![Gem class removal](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/gemclass%20selection.png)
 
-#### Background Removal
+##### Background Removal
 
 To prepare the images for analysis, background removal was performed to ensure that only the gemstones themselves were analyzed, reducing noise and improving model accuracy. This process was carried out using Visual Studio Code (v1.75.0) along with Python (v3.10.8).
 The images were accessed from the local drive using the SV2 Library (v1.5). For the actual background removal, the Rembg Library (v2.0.30) was employed. This library is specifically designed for image segmentation and effectively isolates the subject. in this case, the gemstones from their backgrounds. By removing the backgrounds, the dataset was standardized, making the images more uniform and better suited for machine learning algorithms.
@@ -87,7 +87,7 @@ Following shows the gemstone images before and after image preprocessing
 
 ![Background removal](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/background%20removal.png)
 
-#### Discarding Poorly Segmented Images
+##### Discarding Poorly Segmented Images
 
 After performing background segmentation, a quality check was conducted to ensure that the images were properly processed. Poorly segmented images, where the gemstones were not accurately separated from the background, were identified and discarded. These included images where significant portions of the gemstone were missing or where remnants of the background were still visible. Additionally, images containing gem clusters—where multiple gemstones were present in a single image were also discarded. Such images could confuse the algorithm, as they introduce ambiguity in identifying and classifying individual gemstones.
 
@@ -95,7 +95,7 @@ After performing background segmentation, a quality check was conducted to ensur
 
 By eliminating these poorly segmented images, the dataset was refined to include only high-quality, well-segmented images, ensuring more reliable and accurate predictions by the machine learning model.
 
-#### Image Dataset for Feature Extraction
+##### Image Dataset for Feature Extraction
 
 After the image preprocessing steps, including gem class selection, background removal, and discarding poorly segmented images, the dataset was refined and organized for feature extraction. 
 
@@ -127,7 +127,7 @@ The vectorized form of the images enables the machine learning models to process
 
 #### 4.	Data Pre-processing 
 
-**Outlier Detection**
+##### Outlier Detection
 
 To further refine the dataset, outlier detection was performed using the **Outlier widget** in Orange, a powerful tool for identifying data points that deviate significantly from the rest of the dataset. Detecting and handling outliers is a critical step in data preprocessing, as outliers can skew the results and reduce the performance of machine learning models.
 
@@ -155,7 +155,7 @@ The output of this process was a classification of the dataset into outliers and
 
 By identifying and separating outliers from inliers, the dataset was further refined to ensure that only high-quality, representative images were used for model training. This step helps in building more robust and accurate machine learning models by minimizing the impact of anomalies in the data.
 
-**Normalization**
+##### Normalization
 
 **Method – Continuize Widget**
 
@@ -179,13 +179,13 @@ The normalized dataset is now ready for use in machine learning models, as norma
 
 #### 5.	Classifiers Construction
 
-**Supervised Machine Learning Algorithms**
+##### Supervised Machine Learning Algorithms
 
 To classify the gemstone images, several supervised machine learning algorithms were employed. Each algorithm was selected for its ability to handle the features extracted from the images and provide accurate classification results. The following classifiers were used logistic regressing using **logistic regression widget**, SVM using **SVM widget**, random forest using **random forest widget**, and neural network using **neural network widget**.
 
 ![models](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/models.png)
  
-**Logistic Regression**
+##### Logistic Regression
 
 Logistic Regression provides probabilistic predictions for each class based on a non-linear transformation of the input features. In the context of multi-class classification, the algorithm uses the softmax function to extend binary logistic regression to multiple classes. The softmax function transforms the raw model outputs (logits) into probabilities by exponentiating and normalizing them, ensuring that the sum of the probabilities for all classes equals one.
 
@@ -193,7 +193,7 @@ Logistic Regression provides probabilistic predictions for each class based on a
 
 The parameter 𝐶 in Logistic Regression is the inverse of the regularization strength. Regularization is used to prevent overfitting by penalizing excessively complex models. A lower value of C increases the regularization strength, leading to a simpler model with reduced variance but potentially higher bias. Conversely, a higher value of  C decreases regularization, allowing the model to fit the training data more closely but with a higher risk of overfitting.
 
-**Support Vector Machine (SVM)**
+##### Support Vector Machine (SVM)
 
 The Support Vector Machine is a powerful classification algorithm that works by finding the hyperplane that best separates the classes in the feature space. SVM is known for its effectiveness in high-dimensional spaces and its ability to handle complex relationships between features through kernel functions.
 
@@ -217,7 +217,7 @@ By optimizing these parameters, the SVM classifier was tuned to achieve the best
 
 ![SVM](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/SVM.png)
 
-**Random Forest**
+##### Random Forest
 
 Random Forest is an ensemble learning method that constructs multiple decision trees during training and outputs the model of the classes (classification) of the individual trees. It is well-regarded for its robustness and accuracy, as it reduces the risk of over fitting by averaging the results from multiple trees. This approach reduces the correlation between the trees, ensuring that each tree in the forest is different and that the overall model benefits from a diverse set of predictions. At each node within a tree, the data is recursively partitioned based on the feature that results in the most homogeneous collection of samples. This feature is selected from a randomly chosen subset of all available features, further reducing the correlation between trees and enhancing the model’s robustness.
 
@@ -238,7 +238,7 @@ By carefully tuning these parameters, the Random Forest model was optimized to a
 
 ![Random forest](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/random%20forest.png)
 
-**Artificial Neural Network – Multi-Layer Perceptron (MLP)**
+##### Artificial Neural Network – Multi-Layer Perceptron (MLP)
 
 The activation of neurons in the hidden layers of the MLP neural network was implemented using the ReLU (Rectified Linear Unit) function. ReLU is a popular activation function that introduces non-linearity into the model, allowing the network to learn complex patterns in the data by outputting the input directly if it is positive, and zero otherwise. This helps in mitigating the vanishing gradient problem and speeds up the training process.
 
@@ -248,7 +248,7 @@ The MLP neural network was trained using the "Back propagation" algorithm, a wid
 
 #### 6. Evaluation of Classifiers 
 
-**Model Performance Evaluation on Training and Test Data**
+##### Model Performance Evaluation on Training and Test Data
 
 After constructing the machine learning models, their performance was evaluated using the Test & Score widget in Orange. This evaluation was performed on both the training and test datasets to assess how well the models learned from the data and how they performed on unseen data.
 
@@ -283,7 +283,7 @@ $$
 
 **7. Training and Testing Time:** The time taken by the model to train on the data and to make predictions on the test data was also recorded. This metric is important for understanding the computational efficiency of the model.
 
-**Prediction on Unseen Gemstone Images**
+##### Prediction on Unseen Gemstone Images
 
 To further validate the models, predictions were made on a separate set of 340 unseen gemstone images, grouped into 85 gem classes. For each gem class, 4 images were used to ensure a representative sample of the class. The predictions were carried out using the Predictions widget in Orange.
 
@@ -295,7 +295,7 @@ By comparing the performance metrics on the training, test, and unseen datasets,
 
 ### Results and Discussion 
 
-**Using train and test data set**
+#### Using train and test data set
 
 ![result train](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/overall_1.png)
 
@@ -319,7 +319,7 @@ Random Forest  also demonstrated the fastest testing time. Once trained, predict
 
 This analysis shows that while Random Forest is the most efficient in both training and testing, Logistic Regression, despite being slower to train, offers relatively fast prediction times. ANN and SVM, while powerful, require more time for both training and testing, reflecting their complexity.
  
-**Using prediction data set**
+#### Using prediction data set
 
 ![overall2](https://github.com/Prasadmadhusanka/Image-Based-Gem-Stone-Classification-Using-Machine-Learning-Algorithms/blob/main/images/overall_2.png)
 
